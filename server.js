@@ -2,6 +2,7 @@ const express=require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT ||3000;
 
 var app = express();
 hbs.registerPartials(__dirname+'/views/partials')
@@ -21,15 +22,15 @@ app.use((req,res,next)=>{
     next();
 });
 
-app.use((req,res,next)=>{
-    res.render('maintenance.hbs',{
-        title : 'Maintenance'
-    });
-});
+// app.use((req,res,next)=>{
+//     res.render('maintenance.hbs',{
+//         title : 'Maintenance'
+//     });
+// });
 
 app.use(express.static(__dirname+'/public'));
 
-app.listen(3000);
+
 var obj={
     name : 'ahmed',
     age : 25
@@ -52,4 +53,8 @@ app.get('/bad',(req,res)=>{
     res.send({
         errorMessage : 'something went bad'
     });
+});
+app.listen(port,()=>{
+    console.log(`the app started at port ${port}`);
+    
 });
