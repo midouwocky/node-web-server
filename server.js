@@ -49,6 +49,20 @@ app.get('/about',(req,res)=>{
     });
 });
 
+app.get('/projects',(req,res)=>{
+    res.render('projects.hbs',{
+        title:'Projects page'
+    });
+});
+
+app.get('/api/develop',(req,res)=>{
+    res.send({
+        name : 'ahmed',
+        age : 25,
+        job : 'software engineer'
+    });
+});
+
 app.get('/bad',(req,res)=>{
     res.send({
         errorMessage : 'something went bad'
